@@ -4,8 +4,11 @@ import { useImmer } from 'use-immer';
 import { IoEyeOutline } from 'react-icons/io5';
 import { IoEyeOffOutline } from 'react-icons/io5';
 import { IoMdCheckmark } from 'react-icons/io';
+import { IoCloseOutline } from 'react-icons/io5';
+import { useState } from 'react';
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [userDetails, setUserDetails] = useImmer({
     fullName: '',
     email: '',
@@ -38,24 +41,30 @@ const Signup = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-bg-color">
       <form className="max-w-580 w-full rounded-10 bg-white p-4 md:p-8">
-        <h2 className="text-30 leading-39 mb-12">Sign Up</h2>
+        <div className="flex justify-between items-center text-text-color mb-12">
+          <h2 className="text-30 leading-39">Sign Up</h2>
+          <IoCloseOutline className="cursor-pointer text-2xl" />
+        </div>
         <div className="mb-8">
           <label htmlFor="fullName" className="block mb-3 text-15 leading-29">
             Full name
           </label>
-          <input type="text" id="fullName" name="fullName" value={fullName} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4" />
+          <input type="text" id="fullName" name="fullName" value={fullName} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4 focus:border-text-color" />
         </div>
         <div className="mb-8">
           <label htmlFor="email" className="block mb-3 text-15 leading-29">
             E-Mail
           </label>
-          <input type="email" name="email" id="email" value={email} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4" />
+          <input type="email" name="email" id="email" value={email} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4 focus:border-text-color" />
         </div>
         <div className="mb-8">
           <label htmlFor="password" className="block mb-3 text-15 leading-29">
             Password
           </label>
-          <input type="password" name="password" id="password" value={password} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4" />
+          <div className="relative">
+            <input type={showPassword ? 'text' : 'password'} name="password" id="password" value={password} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4 focus:border-text-color" />
+            {!showPassword ? <IoEyeOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(true)} /> : <IoEyeOffOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(false)} />}
+          </div>
         </div>
         <div className="mt-14 mb-8">
           <div className="flex items-center justify-center">
