@@ -1,16 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { useImmer } from 'use-immer';
+import { IoEyeOutline } from 'react-icons/io5';
+import { IoEyeOffOutline } from 'react-icons/io5';
+import { IoMdCheckmark } from 'react-icons/io';
 
 const Signup = () => {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [userDetails, setUserDetails] = useImmer({
+    fullName: '',
+    email: '',
+    password: '',
+    privacyAccepted: false
+  });
+
+  const { fullName, email, password, privacyAccepted } = userDetails;
 
   const handleSignup = () => {
-    // Implement signup logic here
     console.log('Signing up...');
+  };
+
+  const handleState = e => {
+    if (e.target.name === 'privacyAccepted') {
+      setUserDetails(draft => {
+        draft[e.target.name] = e.target.checked;
+      });
+    } else {
+      setUserDetails(draft => {
+        draft[e.target.name] = e.target.value;
+      });
+    }
   };
 
   const isSignupDisabled = () => {
@@ -25,24 +43,32 @@ const Signup = () => {
           <label htmlFor="fullName" className="block mb-3 text-15 leading-29">
             Full name
           </label>
-          <input type="text" id="fullName" value={fullName} onChange={e => setFullName(e.target.value)} className="w-full text-15 font-normal border border-border-color rounded-lg p-4" />
+          <input type="text" id="fullName" name="fullName" value={fullName} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4" />
         </div>
         <div className="mb-8">
           <label htmlFor="email" className="block mb-3 text-15 leading-29">
             E-Mail
           </label>
-          <input type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full text-15 font-normal border border-border-color rounded-lg p-4" />
+          <input type="email" name="email" id="email" value={email} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4" />
         </div>
         <div className="mb-8">
           <label htmlFor="password" className="block mb-3 text-15 leading-29">
             Password
           </label>
-          <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} className="w-full text-15 font-normal border border-border-color rounded-lg p-4" />
+          <input type="password" name="password" id="password" value={password} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4" />
         </div>
         <div className="mt-14 mb-8">
           <div className="flex items-center justify-center">
-            <input type="checkbox" id="privacy" checked={privacyAccepted} onChange={e => setPrivacyAccepted(e.target.checked)} className="mr-2" />
-            <span className="text-sm">
+            {/* <input type="checkbox" id="privacy" name="privacyAccepted" checked={privacyAccepted} onChange={handleState} className="mr-2 accent-text-color" /> */}
+            <div className="relative mr-2 flex">
+              <input type="checkbox" id="privacy" name="privacyAccepted" checked={privacyAccepted} onChange={handleState} class="appearance-none rounded-[5px] w-4 h-4 border border-text-color cursor-pointer" />
+              {privacyAccepted ? (
+                <label htmlFor="privacy" className="cursor-pointer absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-text-color">
+                  <IoMdCheckmark />
+                </label>
+              ) : null}
+            </div>
+            <span className="text-sm mt-0.5">
               I’ve read the{' '}
               <a href="#" className="underline">
                 privacy policy
