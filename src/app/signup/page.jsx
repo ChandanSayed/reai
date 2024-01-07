@@ -63,7 +63,7 @@ const Signup = () => {
           </label>
           <div className="relative">
             <input type={showPassword ? 'text' : 'password'} name="password" id="password" value={password} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4 focus:border-text-color" />
-            {!showPassword ? <IoEyeOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(true)} /> : <IoEyeOffOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(false)} />}
+            {password ? !showPassword ? <IoEyeOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(true)} /> : <IoEyeOffOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(false)} /> : null}
           </div>
         </div>
         <div className="mt-14 mb-8">
