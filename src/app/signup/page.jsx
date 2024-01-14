@@ -70,7 +70,7 @@ const Signup = () => {
           <div className="flex items-center justify-center">
             {/* <input type="checkbox" id="privacy" name="privacyAccepted" checked={privacyAccepted} onChange={handleState} className="mr-2 accent-text-color" /> */}
             <div className="relative mr-2 flex">
-              <input type="checkbox" id="privacy" name="privacyAccepted" checked={privacyAccepted} onChange={handleState} class="appearance-none rounded-[5px] w-4 h-4 border border-text-color cursor-pointer" />
+              <input type="checkbox" id="privacy" name="privacyAccepted" checked={privacyAccepted} onChange={handleState} className="appearance-none rounded-[5px] w-4 h-4 border border-text-color cursor-pointer" />
               {privacyAccepted ? (
                 <label htmlFor="privacy" className="cursor-pointer absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-text-color">
                   <IoMdCheckmark />
