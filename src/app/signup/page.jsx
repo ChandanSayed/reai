@@ -17,25 +17,22 @@ const Signup = () => {
   });
 
   const { fullName, email, password, privacyAccepted } = userDetails;
-
+  // Handle form submit
   const handleSignup = () => {
     console.log('Signing up...');
   };
 
+  // event handler to store value to the state
   const handleState = e => {
-    if (e.target.name === 'privacyAccepted') {
-      setUserDetails(draft => {
-        draft[e.target.name] = e.target.checked;
-      });
-    } else {
-      setUserDetails(draft => {
-        draft[e.target.name] = e.target.value;
-      });
-    }
+    const { name, value, checked } = e.target;
+    setUserDetails(draft => {
+      draft[name] = name === 'privacyAccepted' ? checked : value;
+    });
   };
 
+  // function to check all the fields are filled with the values
   const isSignupDisabled = () => {
-    return !(fullName && email && password && privacyAccepted);
+    return !(fullName.trim() && email.trim() && password && privacyAccepted);
   };
 
   return (
@@ -63,7 +60,7 @@ const Signup = () => {
           </label>
           <div className="relative">
             <input type={showPassword ? 'text' : 'password'} name="password" id="password" value={password} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4 focus:border-text-color" />
-            {password ? !showPassword ? <IoEyeOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(true)} /> : <IoEyeOffOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(false)} /> : null}
+            {password ? !showPassword ? <IoEyeOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(true)} aria-label={'Show Password'} /> : <IoEyeOffOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(false)} aria-label={'Hide Password'} /> : null}
           </div>
         </div>
         <div className="mt-14 mb-8">
@@ -71,11 +68,9 @@ const Signup = () => {
             {/* <input type="checkbox" id="privacy" name="privacyAccepted" checked={privacyAccepted} onChange={handleState} className="mr-2 accent-text-color" /> */}
             <div className="relative mr-2 flex">
               <input type="checkbox" id="privacy" name="privacyAccepted" checked={privacyAccepted} onChange={handleState} className="appearance-none rounded-[5px] w-4 h-4 border border-text-color cursor-pointer" />
-              {privacyAccepted ? (
-                <label htmlFor="privacy" className="cursor-pointer absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-text-color">
-                  <IoMdCheckmark />
-                </label>
-              ) : null}
+              <label htmlFor="privacy" className={`cursor-pointer absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-text-color ${privacyAccepted ? 'block' : 'hidden'}`}>
+                <IoMdCheckmark />
+              </label>
             </div>
             <span className="text-sm mt-0.5">
               I’ve read the{' '}
