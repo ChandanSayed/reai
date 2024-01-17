@@ -6,6 +6,10 @@ import { IoEyeOffOutline } from 'react-icons/io5';
 import { IoMdCheckmark } from 'react-icons/io';
 import { IoCloseOutline } from 'react-icons/io5';
 import { useState } from 'react';
+import Image from 'next/image';
+import Close from '/public/images/close.png';
+import OpenEye from '/public/images/view.png';
+import CloseEye from '/public/images/hide.png';
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -40,7 +44,8 @@ const Signup = () => {
       <form className="max-w-580 w-full rounded-10 bg-white p-4 md:p-8">
         <div className="flex justify-between items-center text-text-color mb-12">
           <h2 className="text-30 leading-39">Sign Up</h2>
-          <IoCloseOutline className="cursor-pointer text-2xl" />
+          {/* <IoCloseOutline className="cursor-pointer text-2xl" /> */}
+          <Image className="cursor-pointer text-2xl" src={Close} alt="close" placeholder="blur" quality={100} />
         </div>
         <div className="mb-8">
           <label htmlFor="fullName" className="block mb-3 text-15 leading-29">
@@ -60,7 +65,15 @@ const Signup = () => {
           </label>
           <div className="relative">
             <input type={showPassword ? 'text' : 'password'} name="password" id="password" value={password} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4 focus:border-text-color" />
-            {password ? !showPassword ? <IoEyeOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(true)} aria-label={'Show Password'} /> : <IoEyeOffOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(false)} aria-label={'Hide Password'} /> : null}
+            {password ? (
+              !showPassword ? (
+                // <IoEyeOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(true)} aria-label={'Show Password'} />
+                <Image src={OpenEye} alt="Show Password" placeholder="blur" quality={100} className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(true)} />
+              ) : (
+                //  <IoEyeOffOutline className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(false)} aria-label={'Hide Password'} />
+                <Image src={CloseEye} alt="Hide Password" placeholder="blur" quality={100} className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setShowPassword(false)} />
+              )
+            ) : null}
           </div>
         </div>
         <div className="mt-14 mb-8">
