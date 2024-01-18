@@ -21,12 +21,17 @@ module.exports = {
         10: '10px'
       },
       fontSize: {
-        15: '15px',
-        30: '30px'
+        15: '15px'
       },
       lineHeight: {
         29: '29px',
         39: '39px'
+      },
+      height: {
+        18: '18px'
+      },
+      minHeight: {
+        formHeight: '653.3px'
       }
     }
   },
