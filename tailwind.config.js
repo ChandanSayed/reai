@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'onboard-bg': 'linear-gradient(180deg, #F2F5FC 0%, #ffffff 100%)'
       },
       colors: {
         'text-color': '#252f52',
@@ -28,10 +29,14 @@ module.exports = {
         39: '39px'
       },
       height: {
-        18: '18px'
+        18: '18px',
+        712: '712px'
       },
       minHeight: {
         formHeight: '653.3px'
+      },
+      boxShadow: {
+        'onboard-shadow': '0px 3px 20px #252F521A'
       }
     }
   },
