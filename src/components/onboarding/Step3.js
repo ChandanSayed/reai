@@ -26,7 +26,7 @@ export default function Step3() {
   }
 
   return (
-    <section className="max-w-580 p-8 w-full bg-white m-auto my-16 h-712 border-text-color shadow-onboard-shadow rounded-xl border-solid">
+    <section className="max-w-580 p-4 sm:p-8 w-full bg-white m-auto my-16 h-712 border-text-color shadow-onboard-shadow rounded-xl border-solid">
       <div className="mb-12">
         <h5 className="text-xl font-medium">In this step you can provide images of your home</h5>
         <p className="text-15 font-normal mt-3">If you provide images you can get quick results after the onboarding.</p>
@@ -42,7 +42,7 @@ export default function Step3() {
         <button className="w-32 block bg-button-color text-white h-10 rounded-lg font-semibold text-center mx-auto mt-16 mb-4">Choose</button>
         <p className="text-sm	font-medium mb-7 text-center">Or drag & drop</p>
       </div>
-      <p className="mt-8 mb-2.5 text-15 font-medium">Please also provide any latest renovation, upgrade made on your property, so we can provide better guidance ahead (multiple renovations can be separated by ‘,’)</p>
+      <p className="mt-8 mb-2.5 text-xs sm:text-15 font-medium">Please also provide any latest renovation, upgrade made on your property, so we can provide better guidance ahead (multiple renovations can be separated by ‘,’)</p>
       <div>
         <form action="/" onSubmit={handleForm}>
           <input disabled={tags.length === 2} className="border border-border-color text-15 w-full h-14 rounded-lg px-4" placeholder="i.e ‘bathroom’" type="text" name="tag" value={tagValue} onChange={e => setTagValue(e.target.value)} required />

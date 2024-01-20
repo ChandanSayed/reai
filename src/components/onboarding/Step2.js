@@ -25,7 +25,7 @@ export default function Step2({ setStep }) {
   };
 
   return (
-    <section className="max-w-580 w-full bg-white m-auto my-16 p-8 h-712 border-text-color rounded-xl border-solid shadow-onboard-shadow">
+    <section className="max-w-580 w-full bg-white m-auto my-16 p-4 sm:p-8 h-712 border-text-color rounded-xl border-solid shadow-onboard-shadow">
       <div className="pt-2">
         <h5 className="text-xl font-medium">What’s the address of your home?</h5>
         <p className="text-base font-normal mt-3 mb-14">This will help us in case you want to sell your home</p>
@@ -58,7 +58,7 @@ export default function Step2({ setStep }) {
           <input id="address2" className="border border-border-color w-full px-4 h-14 rounded-lg" type="text" onChange={handleState} name="address2" required />
         </div>
       </div>
-      <div className="flex justify-center gap-3 mt-16">
+      <div className="flex justify-center gap-3 mt-8 sm:mt-16">
         <div className="p-1 w-4 h-4 bg-button-color rounded-full"></div>
         <div className="p-1 w-4 h-4 bg-button-color rounded-full"></div>
         <div className="p-1 w-4 h-4 bg-button-disabled rounded-full"></div>
