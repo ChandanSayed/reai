@@ -20,21 +20,21 @@ export default function Step1({ setStep }) {
       <div className="flex justify-around text-center gap-2 mb-20 sm:mb-32">
         <div className="w-1/3">
           <div className="border border-border-color rounded-full max-w-max mx-auto py-3 sm:py-3.5 overflow-hidden">
-            <Image className="max-w-32" src={Seller} alt="Seller" placeholder="blur" quality={100} />
+            <Image className="max-w-24 sm:max-w-32" src={Seller} alt="Seller" placeholder="blur" quality={100} />
           </div>
           <p className="mt-2 text-xs sm:text-sm max-sm:h-8">I’m a homeowner</p>
           <input onChange={handleRadio} type="radio" name="step" className="h-5 w-5 mt-2" value={'step1'} />
         </div>
         <div className="w-1/3">
           <div className="border border-border-color rounded-full max-w-max mx-auto py-3 sm:py-3.5 overflow-hidden">
-            <Image className="max-w-32" src={Buyer} alt="Buyer" placeholder="blur" quality={100} />
+            <Image className="max-w-24 sm:max-w-32" src={Buyer} alt="Buyer" placeholder="blur" quality={100} />
           </div>
           <p className="mt-2 text-xs sm:text-sm max-sm:h-8">I want to buy a home</p>
           <input onChange={handleRadio} type="radio" name="step" className="h-5 w-5 mt-2" value={'step2'} />
         </div>
         <div className="w-1/3">
           <div className="border border-border-color rounded-full max-w-max mx-auto py-3 sm:py-3.5 overflow-hidden">
-            <Image className="max-w-32" src={Agent} alt="agent" placeholder="blur" quality={100} />
+            <Image className="max-w-24 sm:max-w-32" src={Agent} alt="agent" placeholder="blur" quality={100} />
           </div>
           <p className="mt-2 text-xs sm:text-sm max-sm:h-8">I’m an agent</p>
           <input onChange={handleRadio} type="radio" name="step" className="h-5 w-5 mt-2" value={'step3'} />
