@@ -1,6 +1,7 @@
 'use client';
 import Step1 from '@/components/onboarding/Step1';
 import Step2 from '@/components/onboarding/Step2';
+import Step3 from '@/components/onboarding/Step3';
 import { useState } from 'react';
 
 export default function page() {
@@ -10,6 +11,7 @@ export default function page() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-onboard-bg px-4">
       {step === 'step1' && <Step1 setStep={setStep} />}
       {step === 'step2' && <Step2 setStep={setStep} />}
+      {step === 'step3' && <Step3 setStep={setStep} />}
     </div>
   );
 }
