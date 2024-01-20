@@ -7,14 +7,8 @@ import OpenEye from '/public/images/view.png';
 import CloseEye from '/public/images/hide.png';
 import Header from './Header';
 
-export default function SignUpForm({ handleSignup }) {
+export default function SignUpForm({ handleSignup, userDetails, setUserDetails }) {
   const [showPassword, setShowPassword] = useState(false);
-  const [userDetails, setUserDetails] = useImmer({
-    fullName: '',
-    email: '',
-    password: '',
-    privacyAccepted: false
-  });
 
   const { fullName, email, password, privacyAccepted } = userDetails;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
