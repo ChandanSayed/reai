@@ -5,11 +5,14 @@ import cher from '/public/images/cherimg.png';
 import Image from 'next/image';
 
 import Close from '/public/images/close.png';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 
 export default function Step3() {
   const [tags, setTags] = useState([]);
   const [tagValue, setTagValue] = useState('');
+  const [uploadedImages, setUploadedImages] = useState([]);
+
   function handleForm(e) {
     e.preventDefault();
 
@@ -25,23 +28,48 @@ export default function Step3() {
     });
   }
 
+  const onDrop = useCallback(acceptedFiles => {
+    if (acceptedFiles.length > 4) {
+      console.log('You can upload a maximum of 4 images.');
+      return;
+    }
+    const newImages = acceptedFiles.map(file => URL.createObjectURL(file));
+    setUploadedImages(() => [...newImages]);
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: 'image/*',
+    multiple: true,
+    maxFiles: 4
+  });
+
   return (
-    <section className="max-w-580 p-4 sm:p-8 w-full bg-white m-auto my-16 h-712 border-text-color shadow-onboard-shadow rounded-xl border-solid">
+    <section className="max-w-580 p-4 sm:p-8 w-full bg-white m-auto my-16 sm:h-712 border-text-color shadow-onboard-shadow rounded-xl border-solid">
       <div className="mb-12">
         <h5 className="text-xl font-medium">In this step you can provide images of your home</h5>
         <p className="text-15 font-normal mt-3">If you provide images you can get quick results after the onboarding.</p>
       </div>
       <h5 className="font-semibold mb-3">Images</h5>
-      {/* <div className="border px-4 py-6 flex rounded-lg gap-2.5	justify-center pt-6">
-        <Image src={img1} alt="Im" />
+      {uploadedImages.length > 0 && (
+        <div className="border px-4 py-6 flex flex-wrap rounded-lg gap-2.5 sm:flex-nowrap justify-center pt-6">
+          {/* <Image src={img1} alt="Im" />
         <Image src={Room} alt="Room" />
         <Image src={tv} alt="tv" />
-        <Image src={cher} alt="cher" />
-      </div> */}
-      <div className="w-full border mt-3 rounded-lg">
-        <button className="w-32 block bg-button-color text-white h-10 rounded-lg font-semibold text-center mx-auto mt-16 mb-4">Choose</button>
-        <p className="text-sm	font-medium mb-7 text-center">Or drag & drop</p>
-      </div>
+        <Image src={cher} alt="cher" /> */}
+          {uploadedImages.map((image, index) => (
+            <Image key={index} width={'112'} height={'112'} src={image} alt={`Uploaded ${index}`} className="object-fill h-28 w-28" />
+          ))}
+        </div>
+      )}
+
+      {!uploadedImages.length > 0 && (
+        <div className="w-full border mt-3 rounded-lg" {...getRootProps()}>
+          <input {...getInputProps()} />
+          <button className="w-32 block bg-button-color text-white h-10 rounded-lg font-semibold text-center mx-auto mt-16 mb-4">Choose</button>
+          <p className="text-sm	font-medium mb-7 text-center">Or drag & drop</p>
+        </div>
+      )}
       <p className="mt-8 mb-2.5 text-xs sm:text-15 font-medium">Please also provide any latest renovation, upgrade made on your property, so we can provide better guidance ahead (multiple renovations can be separated by ‘,’)</p>
       <div>
         <form action="/" onSubmit={handleForm}>
@@ -63,7 +91,7 @@ export default function Step3() {
       </div>
       <h4 className="text-sm text-center my-3 text-button-color">Skip</h4>
       <div className="w-full mb-8">
-        <button disabled={true} className="w-32 block mx-auto bg-button-disabled font-semibold	 text-white h-10 rounded-lg">
+        <button disabled={true} className={`w-32 block mx-auto ${tags.length > 0 && uploadedImages.length > 0 ? 'bg-button-color' : 'bg-button-disabled'} font-semibold	 text-white h-10 rounded-lg`}>
           Next
         </button>
       </div>
