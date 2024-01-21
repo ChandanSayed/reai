@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Close from '/public/images/close.png';
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { useRouter } from 'next/navigation';
 
 export default function Step3() {
   const [tags, setTags] = useState([]);
@@ -44,6 +45,8 @@ export default function Step3() {
     maxFiles: 4
   });
 
+  const navigate = useRouter();
+
   return (
     <section className="max-w-580 p-4 sm:p-8 w-full bg-white m-auto my-16 sm:h-712 border-text-color shadow-onboard-shadow rounded-xl border-solid">
       <div className="mb-12">
@@ -53,10 +56,6 @@ export default function Step3() {
       <h5 className="font-semibold mb-3">Images</h5>
       {uploadedImages.length > 0 && (
         <div className="border px-4 py-6 flex flex-wrap rounded-lg gap-2.5 sm:flex-nowrap justify-center pt-6">
-          {/* <Image src={img1} alt="Im" />
-        <Image src={Room} alt="Room" />
-        <Image src={tv} alt="tv" />
-        <Image src={cher} alt="cher" /> */}
           {uploadedImages.map((image, index) => (
             <Image key={index} width={'112'} height={'112'} src={image} alt={`Uploaded ${index}`} className="object-fill h-28 w-28" />
           ))}
@@ -91,7 +90,7 @@ export default function Step3() {
       </div>
       <h4 className="text-sm text-center my-3 text-button-color">Skip</h4>
       <div className="w-full mb-8">
-        <button disabled={true} className={`w-32 block mx-auto ${tags.length > 0 && uploadedImages.length > 0 ? 'bg-button-color' : 'bg-button-disabled'} font-semibold	 text-white h-10 rounded-lg`}>
+        <button disabled={!tags.length > 0 && !uploadedImages.length > 0} onClick={() => navigate.replace('/welcome')} className={`w-32 block mx-auto ${tags.length > 0 && uploadedImages.length > 0 ? 'bg-button-color' : 'bg-button-disabled'} font-semibold	 text-white h-10 rounded-lg`}>
           Next
         </button>
       </div>
