@@ -13,10 +13,20 @@ module.exports = {
         'bg-color': '#252F524D',
         'border-color': '#E9EAEE',
         'button-color': '#3B66F7',
-        'button-disabled': '#9BB2FF'
+        'button-disabled': '#9BB2FF',
+        'color-yellow': '#FFF290',
+        'sidebar-bg': '#EAEDF5',
+        'off-color': '#9297A8',
+        'bg-off-lime': '#CCFCB3',
+        'off-blue': '#3B66F7'
       },
       maxWidth: {
-        580: '580px'
+        580: '580px',
+        512: '512px'
+      },
+      width: {
+        304: '304px',
+        90: '90px'
       },
       borderRadius: {
         10: '10px'
@@ -30,7 +40,8 @@ module.exports = {
       },
       height: {
         18: '18px',
-        712: '712px'
+        712: '712px',
+        90: '90px'
       },
       minHeight: {
         formHeight: '653.3px'
