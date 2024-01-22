@@ -1,10 +1,25 @@
+'use client';
 import Image from 'next/image';
 import Settings from '/public/images/setting.png';
 import Link from 'next/link';
+import { MdClose, MdOutlineMenu } from 'react-icons/md';
+import { useEffect, useState } from 'react';
 
 export default function Sidebar() {
+  const [openMenu, setOpenMenu] = useState(false);
+
+  useEffect(() => {
+    if (openMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [openMenu]);
+
   return (
-    <div className="w-64 bg-white pb-8 flex-col h-screen max-md:absolute max-md:top-0 max-md:bottom-0 max-lg:z-50 max-md:-left-64">
+    <div className={`w-64 bg-white pb-8 flex-col h-screen max-md:absolute max-md:top-0 max-md:bottom-0 max-lg:z-50 transition-all ${openMenu ? 'max-md:-left-0' : 'max-md:-left-64'}`}>
+      <MdOutlineMenu onClick={() => setOpenMenu(true)} className={`absolute -right-10 top-3 text-3xl sm:hidden ${openMenu ? 'hidden' : ''}`} />
+      <MdClose onClick={() => setOpenMenu(false)} className={`absolute -right-10 top-3 text-3xl sm:hidden ${openMenu ? '' : 'hidden'}`} />
       <div className="pt-8">
         <div className="flex justify-evenly">
           <div className="bg-bg-off-lime flex items-center justify-center w-10 h-10 text-center rounded-full">
