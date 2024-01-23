@@ -7,11 +7,13 @@ import QueryButtons from '@/components/welcome/QueryButtons';
 import ChatField from '@/components/welcome/ChatField';
 import Remodel from '@/components/welcome/Remodel';
 import { useState } from 'react';
+import ListToSell from '@/components/welcome/ListToSell';
 
 const page = () => {
   const [actionType, setActionType] = useState('');
+  console.log(actionType);
   return (
-    <div className="w-auto h-auto flex justify-between gap-2 bg-onboard-bg border pr-4 md:pr-6">
+    <div className={`w-auto h-auto flex ${actionType ? '' : 'justify-between'} gap-2 bg-onboard-bg border pr-4 md:pr-6`}>
       <Sidebar />
       {actionType === '' && (
         <div className="flex-1 rounded-2xl font-bold pt-3 pl-4 md:pl-10 max-md:flex-col flex justify-between items-start gap-12">
@@ -28,6 +30,7 @@ const page = () => {
         </div>
       )}
       {actionType.toLowerCase() === 'remodel' && <Remodel />}
+      {actionType.toLowerCase() === 'list to sell' && <ListToSell />}
     </div>
   );
 };
