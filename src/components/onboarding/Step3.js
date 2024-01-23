@@ -63,7 +63,7 @@ export default function Step3() {
       )}
 
       {!uploadedImages.length > 0 && (
-        <div className="w-full border mt-3 rounded-lg" {...getRootProps()}>
+        <div className="w-full border border-border-color mt-3 rounded-lg" {...getRootProps()}>
           <input {...getInputProps()} />
           <button className="w-32 block bg-button-color text-white h-10 rounded-lg font-semibold text-center mx-auto mt-16 mb-4">Choose</button>
           <p className="text-sm	font-medium mb-7 text-center">Or drag & drop</p>

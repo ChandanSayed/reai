@@ -19,7 +19,7 @@ export default function Sidebar() {
   const links = [
     {
       name: 'My journey',
-      link: '#',
+      link: '/welcome',
       style: 'text-off-blue'
     },
     {
@@ -67,9 +67,9 @@ export default function Sidebar() {
         <ul className="font-medium text-15 text-black">
           {links.map((link, i) => (
             <li className="mb-5" key={i}>
-              <a className={link.style} href={link.link}>
+              <Link className={link.style} href={link.link}>
                 {link.name}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
