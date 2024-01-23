@@ -16,6 +16,34 @@ export default function Sidebar() {
     }
   }, [openMenu]);
 
+  const links = [
+    {
+      name: 'My journey',
+      link: '#',
+      style: 'text-off-blue'
+    },
+    {
+      name: 'REimagine',
+      link: '#',
+      style: ''
+    },
+    {
+      name: 'Ai Listing',
+      link: '#',
+      style: ''
+    },
+    {
+      name: 'REbot',
+      link: '#',
+      style: ''
+    },
+    {
+      name: 'Saved',
+      link: '#',
+      style: ''
+    }
+  ];
+
   return (
     <div className={`w-64 bg-white pb-8 flex-col h-screen max-md:absolute max-md:top-0 max-md:bottom-0 max-lg:z-50 transition-all ${openMenu ? 'max-md:-left-0' : 'max-md:-left-64'}`}>
       <MdOutlineMenu onClick={() => setOpenMenu(true)} className={`absolute -right-10 top-3 text-3xl sm:hidden ${openMenu ? 'hidden' : ''}`} />
@@ -37,23 +65,13 @@ export default function Sidebar() {
       </div>
       <div className="pl-8 pt-5 flex flex-col justify-between h-[calc(100%-96px)]">
         <ul className="font-medium text-15 text-black">
-          <li className="mb-5">
-            <a className="text-off-blue" href="#">
-              dashboard
-            </a>
-          </li>
-          <li className="mb-5">
-            <a href="#">REimagine</a>
-          </li>
-          <li className="mb-5">
-            <a href="#">Ai Listing</a>
-          </li>
-          <li className="mb-5">
-            <a href="#">REbot</a>
-          </li>
-          <li className="mb-5">
-            <a href="#">Saved</a>
-          </li>
+          {links.map((link, i) => (
+            <li className="mb-5" key={i}>
+              <a className={link.style} href={link.link}>
+                {link.name}
+              </a>
+            </li>
+          ))}
         </ul>
         <Link href={'/'}>
           <p className="font-semibold text-2xl">

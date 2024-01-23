@@ -21,8 +21,10 @@ module.exports = {
         'off-blue': '#3B66F7'
       },
       maxWidth: {
+        90: '90px',
         580: '580px',
-        512: '512px'
+        512: '512px',
+        1024: '1024px'
       },
       width: {
         304: '304px',
