@@ -3,9 +3,9 @@ import ChatField from './ChatField';
 import Copilot from '/public/images/copilot.png';
 import ChatForm from './ChatForm';
 
-export default function ChatModal({ inputValue, setInputValue, handleForm, conversions }) {
+export default function ChatModal({ inputValue, setInputValue, handleForm, conversions, placeHolder, showChatInput = true, uploadedImages, setUploadedImages, hideChatForm }) {
   return (
-    <div className="my-11 pl-4 sm:pl-11 max-w-1024 w-full min-h-full">
+    <div className="my-11 pl-4 sm:pl-11 max-w-1024 w-full">
       {conversions.map((conversion, i) => {
         // Condition for incoming and outgoing message display
         if (conversion.type === 'incoming') {
@@ -25,7 +25,7 @@ export default function ChatModal({ inputValue, setInputValue, handleForm, conve
           );
         }
       })}
-      <ChatForm inputValue={inputValue} setInputValue={setInputValue} handleForm={handleForm} />
+      {!hideChatForm && <ChatForm uploadedImages={uploadedImages} setUploadedImages={setUploadedImages} inputValue={inputValue} setInputValue={setInputValue} handleForm={handleForm} placeHolder={placeHolder} showChatInput={showChatInput} />}
     </div>
   );
 }
