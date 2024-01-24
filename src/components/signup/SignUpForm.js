@@ -9,7 +9,7 @@ import Header from './Header';
 
 export default function SignUpForm({ handleSignup, userDetails, setUserDetails }) {
   const [showPassword, setShowPassword] = useState(false);
-
+  const [emailError, setEmailError] = useState(false);
   const { fullName, email, password, privacyAccepted } = userDetails;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -26,6 +26,14 @@ export default function SignUpForm({ handleSignup, userDetails, setUserDetails }
     return !(fullName.trim() && emailRegex.test(email) && password && privacyAccepted);
   };
 
+  function checkEmail() {
+    if (emailRegex.test(email)) {
+      setEmailError(false);
+    } else {
+      setEmailError(true);
+    }
+  }
+
   return (
     <form className="max-w-580 w-full rounded-10 bg-white p-4 md:p-8 min-h-formHeight">
       <Header />
@@ -39,7 +47,8 @@ export default function SignUpForm({ handleSignup, userDetails, setUserDetails }
         <label htmlFor="email" className="block mb-3 text-15 leading-29">
           E-Mail
         </label>
-        <input type="email" name="email" id="email" value={email} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4 focus:border-text-color" />
+        <input onBlur={checkEmail} type="email" name="email" id="email" value={email} onChange={handleState} className="w-full text-15 font-normal border border-border-color rounded-lg p-4 focus:border-text-color" />
+        {emailError && <p className="text-red-600 mt-2 font-normal text-sm">Enter valid email</p>}
       </div>
       <div className="mb-8">
         <label htmlFor="password" className="block mb-3 text-15 leading-29">

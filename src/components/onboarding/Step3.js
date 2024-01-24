@@ -48,7 +48,7 @@ export default function Step3() {
   const navigate = useRouter();
 
   return (
-    <section className="max-w-580 p-4 sm:p-8 w-full bg-white m-auto my-16 sm:h-712 border-text-color shadow-onboard-shadow rounded-xl border-solid">
+    <section className="max-w-580 p-4 sm:p-8 w-full bg-white m-auto my-16 sm:min-h-712 border-text-color shadow-onboard-shadow rounded-xl border-solid">
       <div className="mb-12">
         <h5 className="text-xl font-medium">In this step you can provide images of your home</h5>
         <p className="text-15 font-normal mt-3">If you provide images you can get quick results after the onboarding.</p>
@@ -72,10 +72,10 @@ export default function Step3() {
       <p className="mt-8 mb-2.5 text-xs sm:text-15 font-medium">Please also provide any latest renovation, upgrade made on your property, so we can provide better guidance ahead (multiple renovations can be separated by ‘,’)</p>
       <div>
         <form action="/" onSubmit={handleForm}>
-          <input disabled={tags.length === 2} className="border border-border-color text-15 w-full h-14 rounded-lg px-4" placeholder="i.e ‘bathroom’" type="text" name="tag" value={tagValue} onChange={e => setTagValue(e.target.value)} required />
+          <input disabled={tags.length === 10} className="border border-border-color text-15 w-full h-14 rounded-lg px-4" placeholder="i.e ‘bathroom’" type="text" name="tag" value={tagValue} onChange={e => setTagValue(e.target.value)} required />
         </form>
       </div>
-      <div className="mt-3.5 text-base	font-medium gap-2.5	flex">
+      <div className="mt-3.5 text-base font-medium gap-2.5 flex flex-wrap">
         {tags.map((tag, i) => (
           <button key={i} className="text-center text-sm py-1.5 px-2 border border-button-color rounded-full group flex gap-1 items-center pl-4">
             {tag}

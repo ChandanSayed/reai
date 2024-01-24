@@ -46,7 +46,8 @@ module.exports = {
         90: '90px'
       },
       minHeight: {
-        formHeight: '653.3px'
+        formHeight: '653.3px',
+        712: '712px'
       },
       boxShadow: {
         'onboard-shadow': '0px 3px 20px #252F521A'
