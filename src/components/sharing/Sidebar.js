@@ -4,9 +4,11 @@ import Settings from '/public/images/setting.png';
 import Link from 'next/link';
 import { MdClose, MdOutlineMenu } from 'react-icons/md';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Sidebar() {
   const [openMenu, setOpenMenu] = useState(false);
+  const pathName = usePathname();
 
   useEffect(() => {
     if (openMenu) {
@@ -19,28 +21,23 @@ export default function Sidebar() {
   const links = [
     {
       name: 'My journey',
-      link: '/welcome',
-      style: 'text-off-blue'
+      link: '/welcome'
     },
     {
       name: 'REimagine',
-      link: '#',
-      style: ''
+      link: '#'
     },
     {
       name: 'Ai Listing',
-      link: '#',
-      style: ''
+      link: '#'
     },
     {
       name: 'REbot',
-      link: '#',
-      style: ''
+      link: '#'
     },
     {
       name: 'Saved',
-      link: '#',
-      style: ''
+      link: '/saved'
     }
   ];
 
@@ -67,7 +64,7 @@ export default function Sidebar() {
         <ul className="font-medium text-15 text-black">
           {links.map((link, i) => (
             <li className="mb-5" key={i}>
-              <Link className={link.style} href={link.link}>
+              <Link className={`${pathName === link.link.toLowerCase() ? 'text-off-blue' : ''}`} href={link.link}>
                 {link.name}
               </Link>
             </li>

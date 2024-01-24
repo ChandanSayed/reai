@@ -1,6 +1,6 @@
 'use client';
 import RightSidebar from '@/components/welcome/RightSidebar';
-import Sidebar from '@/components/welcome/Sidebar';
+import Sidebar from '@/components/sharing/Sidebar';
 import Copilot from '/public/images/copilot.png';
 import Image from 'next/image';
 import QueryButtons from '@/components/welcome/QueryButtons';
