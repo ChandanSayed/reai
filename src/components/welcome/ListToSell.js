@@ -4,6 +4,7 @@ import { useImmer } from 'use-immer';
 
 export default function ListToSell() {
   const [uploadedImages, setUploadedImages] = useState([]);
+  const [showChatInput, setShowChatInput] = useState(true);
   const [conversions, setConversions] = useImmer([
     {
       message: `Hey Niclas! I’m your copilot How can I help you today?`,
@@ -25,6 +26,19 @@ export default function ListToSell() {
 
   function handleForm(e) {
     e.preventDefault();
+    if (inputValue.toLowerCase() === 'living room') {
+      setConversions(draft => {
+        draft.push({ message: inputValue, type: 'outgoing', avatar: false }, { message: 'Okay! Please choose a picture of your living room like it looks now.', avatar: false, type: 'incoming' });
+        setInputValue('');
+        setShowChatInput(false);
+      });
+    } else {
+      setConversions(draft => {
+        draft.push({ message: inputValue, type: 'outgoing', avatar: false });
+        setInputValue('');
+        setShowChatInput(false);
+      });
+    }
   }
-  return <ChatModal uploadedImages={uploadedImages} setUploadedImages={setUploadedImages} placeHolder="I.e. ‘123 Main St, Anytown, USA’" conversions={conversions} inputValue={inputValue} setInputValue={setInputValue} handleForm={handleForm} />;
+  return <ChatModal showChatInput={showChatInput} uploadedImages={uploadedImages} setUploadedImages={setUploadedImages} placeHolder="I.e. ‘123 Main St, Anytown, USA’" conversions={conversions} inputValue={inputValue} setInputValue={setInputValue} handleForm={handleForm} />;
 }

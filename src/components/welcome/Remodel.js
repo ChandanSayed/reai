@@ -51,6 +51,12 @@ export default function Remodel() {
         setInputValue('');
         setShowChatInput(false);
       });
+    } else {
+      setConversions(draft => {
+        draft.push({ message: inputValue, type: 'outgoing', avatar: false });
+        setInputValue('');
+        setShowChatInput(false);
+      });
     }
   };
 
