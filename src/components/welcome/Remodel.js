@@ -45,19 +45,11 @@ export default function Remodel() {
 
   const handleForm = e => {
     e.preventDefault();
-    if (inputValue.toLowerCase() === 'living room') {
-      setConversions(draft => {
-        draft.push({ message: inputValue, type: 'outgoing', avatar: false }, { message: 'Okay! Please choose a picture of your living room like it looks now.', avatar: false, type: 'incoming' });
-        setInputValue('');
-        setShowChatInput(false);
-      });
-    } else {
-      setConversions(draft => {
-        draft.push({ message: inputValue, type: 'outgoing', avatar: false });
-        setInputValue('');
-        setShowChatInput(false);
-      });
-    }
+    setConversions(draft => {
+      draft.push({ message: inputValue, type: 'outgoing', avatar: false }, { message: 'Okay! Please choose a picture of your living room like it looks now.', avatar: false, type: 'incoming' });
+      setInputValue('');
+      setShowChatInput(false);
+    });
   };
 
   // generate handler function

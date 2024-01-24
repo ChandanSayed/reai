@@ -90,7 +90,7 @@ export default function Step3() {
       </div>
       <h4 className="text-sm text-center my-3 text-button-color">Skip</h4>
       <div className="w-full mb-8">
-        <button disabled={!tags.length > 0 && !uploadedImages.length > 0} onClick={() => navigate.replace('/welcome')} className={`w-32 block mx-auto ${tags.length > 0 && uploadedImages.length > 0 ? 'bg-button-color' : 'bg-button-disabled'} font-semibold	 text-white h-10 rounded-lg`}>
+        <button disabled={tags.length === 0 || uploadedImages.length === 0} onClick={() => navigate.replace('/welcome')} className={`w-32 block mx-auto ${tags.length > 0 && uploadedImages.length > 0 ? 'bg-button-color' : 'bg-button-disabled'} font-semibold text-white h-10 rounded-lg`}>
           Next
         </button>
       </div>
