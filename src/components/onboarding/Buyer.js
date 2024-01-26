@@ -60,7 +60,7 @@ export default function Buyer() {
           <div className="flex justify-center gap-3 mt-[100px]">
             <div className="p-1 w-4 h-4 bg-button-color rounded-full"></div>
             <div className="p-1 w-4 h-4 bg-button-color rounded-full"></div>
-            <div className="p-1 w-4 h-4 bg-button-color rounded-full"></div>
+            <div className="p-1 w-4 h-4 bg-button-disabled rounded-full"></div>
           </div>
           <h4 className="text-sm text-center my-3 text-button-color">Skip</h4>
           <div className="mb-8 flex justify-center mt-3">

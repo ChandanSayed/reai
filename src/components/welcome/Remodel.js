@@ -112,7 +112,7 @@ export default function Remodel() {
               </div>
               <div className="incoming-chat flex gap-5 pt-7">
                 <Image src={Copilot} placeholder="blur" alt="Copilot" className="w-11 h-11 md:w-90 md:h-90 rounded-full" />
-                <ChatField text={`Done! How do you like the remodeling/redesign? If you like it, you can save it and go to next step for Q&A and Advice, or go to Listing to sell. If you like guidance on renovation with this design, please make a custom request and CoPilot will support you here. If you want to generate more images, please continue with new prompt or upload new image for remodeling`} styles={`bg-white after:-left-1.5 after:bg-white`} />
+                <ChatField text={`Done! How do you like the remodeling/redesign? If you like it, you can save it and go to next step for Q&A and Advice, or go to Listing to sell. If you like guidance on renovation with this design, please make a custom request and CoPilot will support you here. If you want to generate more images, please continue with new prompt or upload new image for remodeling`} styles={`bg-white after:-left-1.5 after:bg-white md:max-w-[80%]`} />
               </div>
               <div className="text-right max-w-580 ml-auto mt-9">
                 {buttonText.map((btn, i) => (
