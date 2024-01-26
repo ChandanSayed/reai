@@ -13,9 +13,28 @@ export default function Step2({ setStep }) {
 
   // event handler to store value to the state
   const handleState = e => {
-    const { name, value } = e.target;
     setUserDetails(draft => {
-      draft[name] = value;
+      const { name, value } = e.target;
+
+      if (name === 'zip') {
+        // Check if the input matches the pattern (only numbers)
+        if (/^\d*$/.test(value)) {
+          draft[name] = value;
+        } else {
+          // Provide feedback for invalid input
+          console.log('ZIP should contain only numeric characters.');
+        }
+      } else if (name === 'city') {
+        // Check if the input contains only alphabetic characters
+        if (/^[a-zA-Z]*$/.test(value)) {
+          draft[name] = value;
+        } else {
+          // Provide feedback for invalid input
+          console.log('City should contain only alphabetic characters.');
+        }
+      } else {
+        draft[name] = value;
+      }
     });
   };
 
@@ -35,27 +54,27 @@ export default function Step2({ setStep }) {
           <label htmlFor="address" className="mb-3 block font-semibold">
             Address
           </label>
-          <input id="address" className="border border-border-color w-full px-4 h-14 rounded-lg" type="text" onChange={handleState} name="address" required />
+          <input id="address" className="border border-border-color w-full px-4 h-14 rounded-lg" type="text" onChange={handleState} name="address" value={address} required />
         </div>
         <div className="flex gap-8 mt-10">
           <div className="w-24">
             <label htmlFor="zip" className="block mb-3 font-semibold">
               ZIP
             </label>
-            <input id="zip" className="border border-border-color px-4 w-full h-14 rounded-lg" type="text" onChange={handleState} name="zip" required />
+            <input id="zip" value={zip} className="border border-border-color px-4 w-full h-14 rounded-lg" type="text" onChange={handleState} name="zip" required />
           </div>
           <div className="flex-1">
             <label htmlFor="city" className="block mb-3 font-semibold">
               City
             </label>
-            <input id="city" className="border border-border-color w-full px-4 h-14 rounded-lg" type="text" onChange={handleState} name="city" required />
+            <input value={city} id="city" className="border border-border-color w-full px-4 h-14 rounded-lg" type="text" onChange={handleState} name="city" required />
           </div>
         </div>
         <div className="mt-10">
           <label htmlFor="address2" className="block mb-3 font-semibold">
             Address
           </label>
-          <input id="address2" className="border border-border-color w-full px-4 h-14 rounded-lg" type="text" onChange={handleState} name="address2" required />
+          <input value={address2} id="address2" className="border border-border-color w-full px-4 h-14 rounded-lg" type="text" onChange={handleState} name="address2" required />
         </div>
       </div>
       <div className="flex justify-center gap-3 mt-8 sm:mt-16">

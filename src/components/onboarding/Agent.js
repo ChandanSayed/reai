@@ -14,7 +14,14 @@ export default function Agent() {
   // event handler to store value to the state
   const handleState = e => {
     setUserDetails(draft => {
-      draft[e.target.id][e.target.name] = e.target.value;
+      if (e.target.name === 'id') {
+        // Check if the input matches the pattern (only numbers)
+        if (/^\d*$/.test(e.target.value)) {
+          draft[e.target.id][e.target.name] = e.target.value;
+        }
+      } else {
+        draft[e.target.id][e.target.name] = e.target.value;
+      }
     });
   };
 

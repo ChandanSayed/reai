@@ -72,7 +72,10 @@ export default function BuyerLastStep() {
 
   function handleChange(e) {
     setUserInputs(draft => {
-      draft[e.target.name] = e.target.value;
+      // Check if the input matches the pattern (only numbers)
+      if (/^\d*$/.test(e.target.value)) {
+        draft[e.target.name] = e.target.value;
+      }
     });
   }
 

@@ -14,10 +14,24 @@ export default function AgentLastStep() {
   const router = useRouter();
 
   function handleCheck(e) {
-    console.log(e.target.value);
-    setInputValues(draft => {
-      draft[e.target.name] = e.target.value;
-    });
+    if (e.target.name === 'preference') {
+      setInputValues(draft => {
+        draft[e.target.name] = e.target.value;
+      });
+    } else if (e.target.name === 'state') {
+      if (/^[a-zA-Z]*$/.test(e.target.value)) {
+        setInputValues(draft => {
+          draft[e.target.name] = e.target.value;
+        });
+      }
+    } else {
+      // Check if the input matches the pattern (only numbers)
+      if (/^\d*$/.test(e.target.value)) {
+        setInputValues(draft => {
+          draft[e.target.name] = e.target.value;
+        });
+      }
+    }
   }
 
   function checkDisable() {

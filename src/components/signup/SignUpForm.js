@@ -17,7 +17,13 @@ export default function SignUpForm({ handleSignup, userDetails, setUserDetails }
   const handleState = e => {
     const { name, value, checked } = e.target;
     setUserDetails(draft => {
-      draft[name] = name === 'privacyAccepted' ? checked : value;
+      if (name === 'fullName') {
+        if (/^[a-zA-Z\s]*$/.test(value)) {
+          draft[name] = value;
+        }
+      } else {
+        draft[name] = name === 'privacyAccepted' ? checked : value;
+      }
     });
   };
 
