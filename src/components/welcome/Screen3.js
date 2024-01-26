@@ -4,8 +4,9 @@ import { useImmer } from 'use-immer';
 import Copilot from '/public/images/copilot.png';
 import Loader from '/public/images/loader.gif';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
-export default function Screen3() {
+export default function Screen3({ setShowGeneratedList }) {
   const [conversions, setConversions] = useImmer([
     {
       message: `Please add any special features of your property or recent renovations.`,
@@ -23,6 +24,13 @@ export default function Screen3() {
       type: 'incoming'
     }
   ]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowGeneratedList('generated-list');
+    }, 2000);
+  }, []);
+
   return (
     <div className="my-11 pl-4 sm:pl-11 max-w-1024 w-full">
       {conversions.map((conversion, i) => {

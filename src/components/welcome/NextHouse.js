@@ -5,10 +5,12 @@ import Copilot from '/public/images/copilot.png';
 import { useDropzone } from 'react-dropzone';
 import Screen2 from './Screen2';
 import Screen3 from './Screen3';
+import GeneratedList from './GeneratedList';
 
 export default function NextHouse() {
   const [uploadedImages, setUploadedImages] = useState([]);
   const [screenCount, setScreenCount] = useState('screen1');
+  const [showGeneratedList, setShowGeneratedList] = useState(false);
   const onDrop = useCallback(acceptedFiles => {
     const newImages = acceptedFiles.map(file => URL.createObjectURL(file));
     setUploadedImages(() => [...newImages]);
@@ -21,7 +23,7 @@ export default function NextHouse() {
   });
 
   return (
-    <div className="max-w-1024 w-full mt-9 pl-4 sm:pl-10 pr-4">
+    <div className="max-w-1024 w-full mt-9 pl-4 sm:pl-10">
       {screenCount === 'screen1' && (
         <>
           <div className="incoming-chat flex items-center gap-5 pt-7">
@@ -59,9 +61,10 @@ export default function NextHouse() {
       )}
       {screenCount === 'screen3' && (
         <>
-          <Screen3 length={uploadedImages.length} />
+          <Screen3 setShowGeneratedList={setScreenCount} length={uploadedImages.length} />
         </>
       )}
+      {screenCount === 'generated-list' && <GeneratedList />}
     </div>
   );
 }
