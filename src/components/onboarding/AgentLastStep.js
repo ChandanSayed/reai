@@ -42,14 +42,20 @@ export default function AgentLastStep() {
           <p className="text-sm sm:text-15 flex-1">I work as listing agent & buyer agent, but more on listing</p>
         </div>
         <p className="text-base font-semibold">In which area are you mostly working?</p>
-        <div className="gap-4 flex flex-col sm:flex-row mt-3 mb-7">
-          <input className="w-full sm:w-24 h-14 rounded-lg border border-border-color p-3" value={inputValues.zip} onChange={handleCheck} placeholder="ZIP" name="zip" type="text" />
-          <input className="flex-1  rounded-lg h-14 border border-border-color p-3" value={inputValues.state} onChange={handleCheck} placeholder="State" name="state" type="text" />
+        <div className="gap-4 flex mt-3 mb-7">
+          <input className="w-24 h-14 rounded-lg border border-border-color p-3" value={inputValues.zip} onChange={handleCheck} placeholder="ZIP" name="zip" type="text" />
+          <input className="w-full rounded-lg h-14 border border-border-color p-3" value={inputValues.state} onChange={handleCheck} placeholder="State" name="state" type="text" />
         </div>
         <p className="text-base font-semibold">Do you prefer any price range for the properties you work with?</p>
-        <div className="flex flex-col sm:flex-row gap-4 mt-3">
-          <input className="flex-1 h-14 border border-border-color rounded-lg p-3" value={inputValues.min} onChange={handleCheck} name="min" placeholder="Min USD" type="text" />
-          <input className="flex-1 h-14 border border-border-color rounded-lg p-3" value={inputValues.max} onChange={handleCheck} name="max" placeholder="Max USD" type="text" />
+        <div className="flex gap-4 mt-3">
+          <div className="relative">
+            <input className="w-full h-14 border border-border-color rounded-lg p-3 pr-10" value={inputValues.min} onChange={handleCheck} name="min" placeholder="Min" type="text" />
+            <p className="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm sm:text-15 text-off-color">USD</p>
+          </div>
+          <div className="relative">
+            <input className="w-full h-14 border border-border-color rounded-lg p-3 pr-10" value={inputValues.max} onChange={handleCheck} name="max" placeholder="Max" type="text" />
+            <p className="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm sm:text-15 text-off-color">USD</p>
+          </div>
         </div>
       </div>
       <div className="flex justify-center gap-3 mt-[50px]">

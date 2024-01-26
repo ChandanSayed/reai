@@ -1,5 +1,6 @@
 'use client';
 import Agent from '@/components/onboarding/Agent';
+import Buyer from '@/components/onboarding/Buyer';
 import Step1 from '@/components/onboarding/Step1';
 import Step2 from '@/components/onboarding/Step2';
 import Step3 from '@/components/onboarding/Step3';
@@ -14,6 +15,7 @@ export default function page() {
       {step === 'step1' && <Step1 setStep={setStep} userType={userType} setUserType={setUserType} />}
       {step === 'step2' && userType === 'homeowner' && <Step2 setStep={setStep} />}
       {step === 'step2' && userType === 'agent' && <Agent />}
+      {step === 'step2' && userType === 'buyer' && <Buyer />}
       {step === 'step3' && <Step3 setStep={setStep} />}
     </div>
   );
