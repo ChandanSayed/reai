@@ -29,11 +29,11 @@ export default function GeneratedList() {
         <PropertyDetails />
         <PropertyDescription />
         <PropertyFeatures />
-      </div>
-      <div className="buttons text-right max-w-465 ml-auto">
-        <button className="underline font-normal text-sm md:text-15 mt-4">Reset Chat</button>
-        <button className="font-semibold p-3 rounded-lg text-sm md:text-15 mt-4 mx-3 bg-text-color text-white hover:bg-opacity-80">Publish to FSBO</button>
-        <button className="font-semibold p-3 rounded-lg text-sm md:text-15 mt-4 bg-button-color text-white hover:bg-opacity-80">Export to MLS</button>
+        <div className="buttons text-right max-w-465 ml-auto mt-6">
+          <button className="underline font-normal text-sm md:text-15 mt-4">Reset Chat</button>
+          <button className="font-semibold p-3 rounded-lg text-sm md:text-15 mt-4 mx-3 bg-text-color text-white hover:bg-opacity-80">Publish to FSBO</button>
+          <button className="font-semibold p-3 rounded-lg text-sm md:text-15 mt-4 bg-button-color text-white hover:bg-opacity-80">Export to MLS</button>
+        </div>
       </div>
       <div className="text-right max-w-465 ml-auto mt-9 mb-6">
         <h4 className="text-sm sm:text-base font-medium text-left">What do you want to to next?</h4>
