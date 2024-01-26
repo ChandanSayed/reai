@@ -13,7 +13,17 @@ export default function Buyer() {
 
   const handleInput = e => {
     setUserInputs(draft => {
-      draft[e.target.name] = e.target.value;
+      if (e.target.name === 'city') {
+        // Check if the input contains only alphabetic characters
+        if (/^[a-zA-Z]*$/.test(e.target.value)) {
+          draft[e.target.name] = e.target.value;
+        }
+      } else {
+        // Check if the input matches the pattern (only numbers)
+        if (/^\d*$/.test(e.target.value)) {
+          draft[e.target.name] = e.target.value;
+        }
+      }
     });
   };
 
