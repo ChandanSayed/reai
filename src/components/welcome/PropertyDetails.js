@@ -32,7 +32,16 @@ export default function PropertyDetails() {
 
   function handleInput(e) {
     setEditValue(draft => {
-      draft[e.target.name] = e.target.value;
+      if (e.target.name === 'bed' || e.target.name === 'sqft') {
+        // Check if the input matches the pattern (only numbers)
+        if (/^\d*$/.test(e.target.value)) {
+          draft[e.target.name] = e.target.value;
+        }
+      } else {
+        if (/^-?\d*\.?\d*$/.test(e.target.value)) {
+          draft[e.target.name] = e.target.value;
+        }
+      }
     });
   }
 
@@ -43,7 +52,11 @@ export default function PropertyDetails() {
   }
 
   useEffect(() => {
-    setActiveSave(true);
+    if (!editValue.title || !editValue.bed || !editValue.acre || !editValue.bath || !editValue.sqft) {
+      setActiveSave(false);
+    } else {
+      setActiveSave(true);
+    }
   }, [editValue]);
 
   return (
